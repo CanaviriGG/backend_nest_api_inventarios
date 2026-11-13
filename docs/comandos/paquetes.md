@@ -19,3 +19,17 @@ npm install dotenv
 ```
 npm install -D ts-node tsconfig-paths
 ```
+
+### Para Variables de entorno (.env) dotenv
+```
+npm i --save @nestjs/config
+```
+
+### habilitación validación con Class validator
+```
+npm i --save class-validator class-transformer
+```
+
+
+
+
