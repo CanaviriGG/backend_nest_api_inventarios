@@ -1,14 +1,17 @@
-import { Column, Entity } from "typeorm";
-import { PrimaryGeneratedColumn } from "typeorm/browser";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Producto } from "../../producto/entities/producto.entity.js";
 
 @Entity('categorias')
 export class Categoria {
     @PrimaryGeneratedColumn()
-    id:number;
+    id: number;
 
-   @Column()
-   nombre: string;
-   
-   @Column({nullable: true})
-   descripcion: string;
+    @Column()
+    nombre: string;
+
+    @Column({type: 'text', nullable: true})
+    descripcion: string;
+
+    @OneToMany("Producto", "categoria")
+    productos: Producto[]
 }
