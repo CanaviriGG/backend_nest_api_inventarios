@@ -32,3 +32,31 @@ npm i --save class-validator class-transformer
 
 
 
+
+### cifrado o encriptación de Contraseñas
+```
+npm i bcrypt
+```
+### Autenticacion
+```
+nest g controller modules/auth
+nest g service modules/auth
+
+```
+
+### JWT (generaion de Tokens)
+```
+npm i @nestjs/jwt
+
+```
+
+## Para subida de Imagenes
+```
+npm install -D @types/multer
+npm install multer
+```
+
+### Renderizar archivos estaticos (imagen)
+```
+npm install --save @nestjs/serve-static
+```

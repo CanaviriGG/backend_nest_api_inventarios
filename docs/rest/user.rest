@@ -1,0 +1,29 @@
+### listar
+GET http://127.0.0.1:3000/users
+
+### guardar
+POST http://127.0.0.1:3000/users
+Content-Type: application/json
+
+{
+  "name": "mario1255",
+  "email": "mario5512@gmail.com",
+  "password": "mario15212345",
+  "roleIds": []
+}
+
+### modificar
+PATCH http://127.0.0.1:3000/users/2
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "mario12334534",
+  "email": "mario12345343@gmail.com",
+  "password": "mario13212345"
+}
+
+
+### mostar por el id
+GET http://127.0.0.1:3000/users/2
+
