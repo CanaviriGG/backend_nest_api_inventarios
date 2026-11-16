@@ -1,9 +1,12 @@
 ### listar
 GET http://127.0.0.1:3000/categoria
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImFuYUBnbWFpbC5jb20iLCJpYXQiOjE3OTQ4NTIyNzksImV4cCI6MTc5NDg1OTQ3OX0.5QSh000oBD0BR4kEq0Go3UIOOuJLO2JVhHwJj8MeJ8w"
+}
 
 ### Guardar
 POST http://127.0.0.1:3000/categoria
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImFuYUBnbWFpbC5jb20iLCJpYXQiOjE3OTQ4NTIyNzksImV4cCI6MTc5NDg1OTQ3OX0.5QSh000oBD0BR4kEq0Go3UIOOuJLO2JVhHwJj8MeJ8w"
 
 {
     "nombre": "ropa",
@@ -12,10 +15,12 @@ Content-Type: application/json
 
 ### Mostrar
 GET http://127.0.0.1:3000/categoria/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImFuYUBnbWFpbC5jb20iLCJpYXQiOjE3OTQ4NTIyNzksImV4cCI6MTc5NDg1OTQ3OX0.5QSh000oBD0BR4kEq0Go3UIOOuJLO2JVhHwJj8MeJ8w"
 
 #### modificar
 PATCH http://127.0.0.1:3000/categoria/2
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImFuYUBnbWFpbC5jb20iLCJpYXQiOjE3OTQ4NTIyNzksImV4cCI6MTc5NDg1OTQ3OX0.5QSh000oBD0BR4kEq0Go3UIOOuJLO2JVhHwJj8MeJ8w"
 
 {
   "nombre": "Muebles para el hogar",
