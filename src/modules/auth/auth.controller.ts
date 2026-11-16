@@ -1,11 +1,9 @@
 import { Body, Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service.js';
 import { AuthGuard } from './auth.guard.js';
+import { LoginAuth } from './dto/login-auth.dto.js';
 
-interface LoginAuthDto{
-    email: string,
-    password: string
-}
+
 
 @Controller('auth')
 export class AuthController {
@@ -13,7 +11,7 @@ export class AuthController {
     constructor(private authService: AuthService){}
 
     @Post("/login")
-    funIngresar(@Body() datos: LoginAuthDto){
+    funIngresar(@Body() datos: LoginAuth){
         return this.authService.login(datos.email, datos.password);
     }
 
