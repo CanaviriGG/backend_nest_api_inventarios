@@ -14,6 +14,7 @@ async function bootstrap() {
   
   //INI: Habilitando Swagger
   const config = new DocumentBuilder()
+    .addBearerAuth()
     .setTitle('Proyecto Inventarios')
     .setDescription('Proyecto backend con Nest')
     .setVersion('1.0')

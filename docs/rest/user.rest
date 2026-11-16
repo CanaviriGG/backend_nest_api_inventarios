@@ -1,17 +1,17 @@
 ### listar
 GET http://127.0.0.1:3000/users
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImFuYUBnbWFpbC5jb20iLCJpYXQiOjE3OTQ4NDY3ODMsImV4cCI6MTc5NDg1Mzk4M30.Gh4TeOtmgmABa7J82Gb6KHuhDnauB9X9KYqL2AvL0lc
 ### guardar
 POST http://127.0.0.1:3000/users
 Content-Type: application/json
 
 {
-  "name": "mario1255",
-  "email": "mario5512@gmail.com",
-  "password": "mario15212345",
+  "name": "ana1255",
+  "email": "ana@gmail.com",
+  "password": "ana123",
   "roleIds": []
 }
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImFuYUBnbWFpbC5jb20iLCJpYXQiOjE3OTQ4NDY3ODMsImV4cCI6MTc5NDg1Mzk4M30.Gh4TeOtmgmABa7J82Gb6KHuhDnauB9X9KYqL2AvL0lc
 ### modificar
 PATCH http://127.0.0.1:3000/users/2
 Content-Type: application/json
@@ -22,8 +22,8 @@ Accept: application/json
   "email": "mario12345343@gmail.com",
   "password": "mario13212345"
 }
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImFuYUBnbWFpbC5jb20iLCJpYXQiOjE3OTQ4NDY3ODMsImV4cCI6MTc5NDg1Mzk4M30.Gh4TeOtmgmABa7J82Gb6KHuhDnauB9X9KYqL2AvL0lc
 
 ### mostar por el id
 GET http://127.0.0.1:3000/users/2
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImFuYUBnbWFpbC5jb20iLCJpYXQiOjE3OTQ4NDY3ODMsImV4cCI6MTc5NDg1Mzk4M30.Gh4TeOtmgmABa7J82Gb6KHuhDnauB9X9KYqL2AvL0lc

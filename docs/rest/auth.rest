@@ -1,8 +1,12 @@
-### listar
+### login
 POST http://127.0.0.1:3000/auth/login
 Content-Type: application/json
 
 {
-    "email": "luis@gmail.com",
-    "password": "luis12345"
+    "email": "ana@gmail.com",
+  "password": "ana123"
 }
+
+### perfil
+GET http://127.0.0.1:3000/auth/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImFuYUBnbWFpbC5jb20iLCJpYXQiOjE3OTQ4NDY3ODMsImV4cCI6MTc5NDg1Mzk4M30.Gh4TeOtmgmABa7J82Gb6KHuhDnauB9X9KYqL2AvL0lc
