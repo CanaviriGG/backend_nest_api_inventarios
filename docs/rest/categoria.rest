@@ -1,0 +1,23 @@
+### listar
+GET http://127.0.0.1:3000/categoria
+
+### Guardar
+POST http://127.0.0.1:3000/categoria
+Content-Type: application/json
+
+{
+    "nombre": "ropa",
+    "descripcion": "ropa americana"
+}
+
+### Mostrar
+GET http://127.0.0.1:3000/categoria/2
+
+#### modificar
+PATCH http://127.0.0.1:3000/categoria/2
+Content-Type: application/json
+
+{
+  "nombre": "Muebles para el hogar",
+  "descripcion": "Muebles de madera actualizado"
+}
