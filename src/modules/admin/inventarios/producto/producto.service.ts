@@ -59,15 +59,40 @@ export class ProductoService {
   }
   
 
-  findOne(id: number) {
-    return `This action returns a #${id} producto`;
+  async findOne(id: number) {
+    const producto = await this.prodRepository
+      .createQueryBuilder('producto')
+      .leftJoinAndSelect('producto.categoria', 'categoria')
+      .leftJoinAndSelect('producto.almacenes', 'productoAlmacen')
+      .leftJoinAndSelect('productoAlmacen.almacen', 'almacen')
+      .where('producto.id = :id', { id })
+      .getOne();
+
+    if (!producto) throw new NotFoundException('Producto no encontrado');
+
+    return producto;
   }
 
-  update(id: number, updateProductoDto: UpdateProductoDto) {
-    return `This action updates a #${id} producto`;
+  async update(id: number, updateProductoDto: UpdateProductoDto) {
+    const producto = await this.findOne(id);
+
+    const { categoriaId, ...datos } = updateProductoDto;
+
+    if (categoriaId) {
+      const categoria = await this.cateRepository.findOne({
+        where: { id: categoriaId },
+      });
+      if (!categoria) throw new NotFoundException('Categoria no encontrada');
+      producto.categoria = categoria;
+    }
+
+    this.prodRepository.merge(producto, datos);
+    return this.prodRepository.save(producto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} producto`;
+  async remove(id: number) {
+    const producto = await this.findOne(id);
+    producto.estado = false;
+    return this.prodRepository.save(producto);
   }
 }
