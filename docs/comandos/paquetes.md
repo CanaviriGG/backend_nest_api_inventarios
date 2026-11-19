@@ -49,7 +49,6 @@ nest g service modules/auth
 npm i @nestjs/jwt
 
 ```
-
 ## Para subida de Imagenes
 ```
 npm install -D @types/multer

@@ -9,6 +9,7 @@ import { PermissionModule } from './modules/admin/permission/permission.module.j
 import { ClienteproveedorModule } from './modules/admin/clienteproveedor/clienteproveedor.module.js';
 import { NotaModule } from './modules/admin/nota/nota.module.js';
 import { TypeOrmModule } from '@nestjs/typeorm';
+
 import { ConfigModule } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
 
