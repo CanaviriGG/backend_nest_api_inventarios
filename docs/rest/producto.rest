@@ -1,0 +1,247 @@
+#### listar
+GET http://127.0.0.1:3000/producto
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImFuYUBnbWFpbC5jb20iLCJpYXQiOjE3OTUxMTE0MjcsImV4cCI6MTc5NTExODYyN30.4-AmaIm14UuuM43pkPFvleaXi2jomX9S2_1-3zLQLgY
+
+#### Guardar 
+POST http://127.0.0.1:3000/producto 
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImFuYUBnbWFpbC5jb20iLCJpYXQiOjE3OTUxMTE0MjcsImV4cCI6MTc5NTExODYyN30.4-AmaIm14UuuM43pkPFvleaXi2jomX9S2_1-3zLQLgY
+{
+  "nombre": "Arroz",
+  "descripcion": "Arroz de grano largo de primera calidad",
+  "codigo_barra": "7751234567890",
+  "unidad_medida": "kg",
+  "marca": "Campo",
+  "precio_venta_actual": 35.5,
+  "imagen": "uploads/productos/arroz.jpg",
+  "estado": true,
+  "categoriaId": 1
+},
+
+#### Guardar 
+POST http://127.0.0.1:3000/producto 
+Content-Type: application/json
+
+{
+    "nombre": "Camisa Casual Dama",
+    "descripcion": "Camisa casual de algodón para mujer",
+    "codigo_barra": "7751000000001",
+    "unidad_medida": "unidad",
+    "marca": "Fashion Lady",
+    "precio_venta_actual": 85.50,
+    "imagen": "uploads/productos/camisa-casual.jpg",
+    "estado": true,
+    "categoriaId": 1
+}
+
+#### Guardar 
+POST http://127.0.0.1:3000/producto 
+Content-Type: application/json
+
+{
+    "nombre": "Vestido Floral",
+    "descripcion": "Vestido elegante con estampado floral",
+    "codigo_barra": "7751000000002",
+    "unidad_medida": "unidad",
+    "marca": "Bella Moda",
+    "precio_venta_actual": 150.00,
+    "imagen": "uploads/productos/vestido-floral.jpg",
+    "estado": true,
+    "categoriaId": 1
+}
+#### Guardar 
+POST http://127.0.0.1:3000/producto 
+Content-Type: application/json
+
+{
+    "nombre": "Pantalón Jean Dama",
+    "descripcion": "Pantalón jean azul de corte moderno",
+    "codigo_barra": "7751000000003",
+    "unidad_medida": "unidad",
+    "marca": "Denim Style",
+    "precio_venta_actual": 180.00,
+    "imagen": "uploads/productos/pantalon-jean.jpg",
+    "estado": true,
+    "categoriaId": 1
+}
+#### Guardar 
+POST http://127.0.0.1:3000/producto 
+Content-Type: application/json
+
+{
+    "nombre": "Blusa Elegante",
+    "descripcion": "Blusa de manga larga para ocasiones especiales",
+    "codigo_barra": "7751000000004",
+    "unidad_medida": "unidad",
+    "marca": "Fashion Lady",
+    "precio_venta_actual": 95.00,
+    "imagen": "uploads/productos/blusa-elegante.jpg",
+    "estado": true,
+    "categoriaId": 1
+}
+#### Guardar 
+POST http://127.0.0.1:3000/producto 
+Content-Type: application/json
+
+{
+    "nombre": "Falda Casual",
+    "descripcion": "Falda femenina de tela ligera",
+    "codigo_barra": "7751000000005",
+    "unidad_medida": "unidad",
+    "marca": "Bella Moda",
+    "precio_venta_actual": 75.00,
+    "imagen": "uploads/productos/falda-casual.jpg",
+    "estado": true,
+    "categoriaId": 1
+}
+#### Guardar 
+POST http://127.0.0.1:3000/producto 
+Content-Type: application/json
+
+{
+    "nombre": "Chaqueta de Dama",
+    "descripcion": "Chaqueta abrigada para temporada de invierno",
+    "codigo_barra": "7751000000006",
+    "unidad_medida": "unidad",
+    "marca": "Urban Chic",
+    "precio_venta_actual": 250.00,
+    "imagen": "uploads/productos/chaqueta-dama.jpg",
+    "estado": true,
+    "categoriaId": 1
+}
+#### Guardar 
+POST http://127.0.0.1:3000/producto 
+Content-Type: application/json
+
+{
+    "nombre": "Polera Básica",
+    "descripcion": "Polera de algodón de cuello redondo",
+    "codigo_barra": "7751000000007",
+    "unidad_medida": "unidad",
+    "marca": "Cotton Wear",
+    "precio_venta_actual": 55.00,
+    "imagen": "uploads/productos/polera-basica.jpg",
+    "estado": true,
+    "categoriaId": 1
+}
+#### Guardar 
+POST http://127.0.0.1:3000/producto 
+Content-Type: application/json
+
+{
+    "nombre": "Zapatos Casuales",
+    "descripcion": "Zapatos cómodos para uso diario",
+    "codigo_barra": "7751000000008",
+    "unidad_medida": "par",
+    "marca": "Step Fashion",
+    "precio_venta_actual": 220.00,
+    "imagen": "uploads/productos/zapatos-casuales.jpg",
+    "estado": true,
+    "categoriaId": 1
+}
+#### Guardar 
+POST http://127.0.0.1:3000/producto 
+Content-Type: application/json
+
+{
+    "nombre": "Cartera de Dama",
+    "descripcion": "Cartera elegante de cuero sintético",
+    "codigo_barra": "7751000000009",
+    "unidad_medida": "unidad",
+    "marca": "Elegance",
+    "precio_venta_actual": 130.00,
+    "imagen": "uploads/productos/cartera-dama.jpg",
+    "estado": true,
+    "categoriaId": 1
+}
+#### Guardar 
+POST http://127.0.0.1:3000/producto 
+Content-Type: application/json
+
+{
+    "nombre": "Ropero de Madera",
+    "descripcion": "Ropero de madera con tres puertas y cajones",
+    "codigo_barra": "7751000000010",
+    "unidad_medida": "unidad",
+    "marca": "Muebles Andinos",
+    "precio_venta_actual": 1850.00,
+    "imagen": "uploads/productos/ropero-madera.jpg",
+    "estado": true,
+    "categoriaId": 2
+}
+#### Guardar 
+POST http://127.0.0.1:3000/producto 
+Content-Type: application/json
+
+{
+    "nombre": "Mesa de Comedor",
+    "descripcion": "Mesa de comedor de madera para seis personas",
+    "codigo_barra": "7751000000011",
+    "unidad_medida": "unidad",
+    "marca": "Madera Noble",
+    "precio_venta_actual": 1200.00,
+    "imagen": "uploads/productos/mesa-comedor.jpg",
+    "estado": true,
+    "categoriaId": 2
+}
+#### Guardar 
+POST http://127.0.0.1:3000/producto 
+Content-Type: application/json
+
+{
+    "nombre": "Silla de Madera",
+    "descripcion": "Silla resistente de madera barnizada",
+    "codigo_barra": "7751000000012",
+    "unidad_medida": "unidad",
+    "marca": "Muebles Andinos",
+    "precio_venta_actual": 280.00,
+    "imagen": "uploads/productos/silla-madera.jpg",
+    "estado": true,
+    "categoriaId": 2
+}
+#### Guardar 
+POST http://127.0.0.1:3000/producto 
+Content-Type: application/json
+
+{
+    "nombre": "Escritorio Ejecutivo",
+    "descripcion": "Escritorio de madera con cajones laterales",
+    "codigo_barra": "7751000000013",
+    "unidad_medida": "unidad",
+    "marca": "Oficina Plus",
+    "precio_venta_actual": 950.00,
+    "imagen": "uploads/productos/escritorio.jpg",
+    "estado": true,
+    "categoriaId": 2
+}
+#### Guardar 
+POST http://127.0.0.1:3000/producto 
+Content-Type: application/json
+
+{
+    "nombre": "Estante de Madera",
+    "descripcion": "Estante de cinco niveles para almacenamiento",
+    "codigo_barra": "7751000000014",
+    "unidad_medida": "unidad",
+    "marca": "Madera Noble",
+    "precio_venta_actual": 650.00,
+    "imagen": "uploads/productos/estante.jpg",
+    "estado": true,
+    "categoriaId": 2
+}
+#### Guardar 
+POST http://127.0.0.1:3000/producto 
+Content-Type: application/json
+
+{
+    "nombre": "Cama de Dos Plazas",
+    "descripcion": "Cama de madera maciza para dos personas",
+    "codigo_barra": "7751000000015",
+    "unidad_medida": "unidad",
+    "marca": "Muebles Andinos",
+    "precio_venta_actual": 1450.00,
+    "imagen": "uploads/productos/cama-dos-plazas.jpg",
+    "estado": true,
+    "categoriaId": 2
+}
+

@@ -1,12 +1,11 @@
 ### listar
 GET http://127.0.0.1:3000/categoria
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImFuYUBnbWFpbC5jb20iLCJpYXQiOjE3OTQ4NTIyNzksImV4cCI6MTc5NDg1OTQ3OX0.5QSh000oBD0BR4kEq0Go3UIOOuJLO2JVhHwJj8MeJ8w"
-}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImFuYUBnbWFpbC5jb20iLCJpYXQiOjE3OTUxMTE0MjcsImV4cCI6MTc5NTExODYyN30.4-AmaIm14UuuM43pkPFvleaXi2jomX9S2_1-3zLQLgY
 
 ### Guardar
 POST http://127.0.0.1:3000/categoria
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImFuYUBnbWFpbC5jb20iLCJpYXQiOjE3OTQ4NTIyNzksImV4cCI6MTc5NDg1OTQ3OX0.5QSh000oBD0BR4kEq0Go3UIOOuJLO2JVhHwJj8MeJ8w"
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImFuYUBnbWFpbC5jb20iLCJpYXQiOjE3OTUxMTE0MjcsImV4cCI6MTc5NTExODYyN30.4-AmaIm14UuuM43pkPFvleaXi2jomX9S2_1-3zLQLgY
 
 {
     "nombre": "ropa",
@@ -15,14 +14,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpb
 
 ### Mostrar
 GET http://127.0.0.1:3000/categoria/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImFuYUBnbWFpbC5jb20iLCJpYXQiOjE3OTQ4NTIyNzksImV4cCI6MTc5NDg1OTQ3OX0.5QSh000oBD0BR4kEq0Go3UIOOuJLO2JVhHwJj8MeJ8w"
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImFuYUBnbWFpbC5jb20iLCJpYXQiOjE3OTUxMTE0MjcsImV4cCI6MTc5NTExODYyN30.4-AmaIm14UuuM43pkPFvleaXi2jomX9S2_1-3zLQLgY
 
 #### modificar
-PATCH http://127.0.0.1:3000/categoria/2
+PATCH http://127.0.0.1:3000/categoria/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImFuYUBnbWFpbC5jb20iLCJpYXQiOjE3OTQ4NTIyNzksImV4cCI6MTc5NDg1OTQ3OX0.5QSh000oBD0BR4kEq0Go3UIOOuJLO2JVhHwJj8MeJ8w"
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImFuYUBnbWFpbC5jb20iLCJpYXQiOjE3OTUxMTE0MjcsImV4cCI6MTc5NTExODYyN30.4-AmaIm14UuuM43pkPFvleaXi2jomX9S2_1-3zLQLgY
 
 {
-  "nombre": "Muebles para el hogar",
-  "descripcion": "Muebles de madera actualizado"
+    "nombre": "ropa",
+    "descripcion": "ropa para damas"
 }
