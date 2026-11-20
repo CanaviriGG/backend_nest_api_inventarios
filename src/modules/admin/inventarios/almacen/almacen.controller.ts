@@ -1,4 +1,16 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Query,
+  DefaultValuePipe,
+  ParseIntPipe,
+} from '@nestjs/common';
+import { ApiQuery } from '@nestjs/swagger';
 import { AlmacenService } from './almacen.service.js';
 import { CreateAlmacenDto } from './dto/create-almacen.dto.js';
 import { UpdateAlmacenDto } from './dto/update-almacen.dto.js';
@@ -13,8 +25,16 @@ export class AlmacenController {
   }
 
   @Get()
-  findAll() {
-    return this.almacenService.findAll();
+  @ApiQuery({ name: 'search', required: false, type: String })
+  @ApiQuery({ name: 'sucursal', required: false, type: Number })
+  findAll(
+    @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number = 1,
+    @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit: number = 10,
+    @Query('sucursal', new DefaultValuePipe(0), ParseIntPipe)
+    sucursal: number = 0,
+    @Query('search') search?: string,
+  ) {
+    return this.almacenService.findAll(page, limit, search, sucursal);
   }
 
   @Get(':id')
