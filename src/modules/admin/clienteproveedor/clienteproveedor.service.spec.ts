@@ -5,7 +5,7 @@ import {
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { vi } from 'vitest';
-import { Nota } from '../nota/dto/nota.entity.js';
+import { Nota } from '../nota/entities/nota.entity.js';
 import { ClienteproveedorService } from './clienteproveedor.service.js';
 import { Clienteproveedor } from './entities/clienteproveedor.entity.js';
 

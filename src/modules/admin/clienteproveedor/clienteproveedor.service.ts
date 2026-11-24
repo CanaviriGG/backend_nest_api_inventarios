@@ -5,7 +5,7 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Nota } from '../nota/dto/nota.entity.js';
+import { Nota } from '../nota/entities/nota.entity.js';
 import { CreateClienteproveedorDto } from './dto/create-clienteproveedor.dto.js';
 import { UpdateClienteproveedorDto } from './dto/update-clienteproveedor.dto.js';
 import { Clienteproveedor } from './entities/clienteproveedor.entity.js';

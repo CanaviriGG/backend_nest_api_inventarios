@@ -3,7 +3,7 @@ import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import request from 'supertest';
 import { vi } from 'vitest';
-import { Nota } from '../nota/dto/nota.entity.js';
+import { Nota } from '../nota/entities/nota.entity.js';
 import { ClienteproveedorModule } from './clienteproveedor.module.js';
 import { Clienteproveedor } from './entities/clienteproveedor.entity.js';
 
