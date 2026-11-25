@@ -61,8 +61,10 @@ export class CreateNotaDto {
     @ApiProperty({
         example: '2026-10-06'
     })
+    /*
     @IsString()
-    fecha: string;
+    fecha?: string;
+    */
 
     @ApiProperty({
         example: 'compra'
