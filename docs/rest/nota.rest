@@ -1,0 +1,119 @@
+@host = http://127.0.0.1:3000
+
+### 0. Login (para obtener el id de usuario; /nota no exige token actualmente)
+# @name login
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{
+    "email": "ana@gmail.com",
+    "password": "ana123"
+}
+
+### 1. Crear proveedor de prueba (el id se usa en la nota)
+# @name crearProveedorNota
+POST {{host}}/clienteproveedor
+Content-Type: application/json
+
+{
+    "tipo": "proveedor",
+    "razon_social": "Proveedor para nota",
+    "identificacion": "NOTA-001",
+    "correo": "proveedor.nota@test.com"
+}
+
+### 2. Crear nota de compra (ingreso de stock)
+# @name crearNota
+POST {{host}}/nota
+Content-Type: application/json
+
+{
+    "tipo_nota": "compra",
+    "clienteproveedor_id": {{crearProveedorNota.response.body.id}},
+    "user_id": 11,
+    "movimientos": [
+        {
+            "producto_id": 11,
+            "almacen_id": 2,
+            "cantidad": 5,
+            "tipo_movimiento": "ingreso",
+            "precio_compra": 10.5,
+            "precio_venta": 15.5,
+            "observaciones": "Compra de prueba"
+        }
+    ]
+}
+
+### Crear nota de venta (salida de stock; requiere stock suficiente)
+POST {{host}}/nota
+Content-Type: application/json
+
+{
+    "tipo_nota": "venta",
+    "clienteproveedor_id": {{crearProveedorNota.response.body.id}},
+    "user_id": 11,
+    "movimientos": [
+        {
+            "producto_id": 11,
+            "almacen_id": 2,
+            "cantidad": 2,
+            "tipo_movimiento": "salida",
+            "precio_compra": 10.5,
+            "precio_venta": 15.5
+        }
+    ]
+}
+
+### Error de validación (tipo inválido, cantidad 0 y campos extra) -> 400
+POST {{host}}/nota
+Content-Type: application/json
+
+{
+    "tipo_nota": "otro",
+    "clienteproveedor_id": 0,
+    "user_id": "x",
+    "campoInexistente": 1,
+    "movimientos": [
+        {
+            "producto_id": 11,
+            "almacen_id": 2,
+            "cantidad": 0,
+            "tipo_movimiento": "x"
+        }
+    ]
+}
+
+### Listar (paginado)
+GET {{host}}/nota?page=1&limit=5
+
+### Listar con búsqueda (tipo, estado, observaciones o razón social)
+GET {{host}}/nota?page=1&limit=5&search=Proveedor
+
+### Mostrar
+GET {{host}}/nota/{{crearNota.response.body.id}}
+
+### Mostrar inexistente -> 404
+GET {{host}}/nota/9999
+
+### Modificar estado/observaciones
+PATCH {{host}}/nota/{{crearNota.response.body.id}}
+Content-Type: application/json
+
+{
+    "estado_nota": "anulado",
+    "observaciones": "Nota anulada por prueba"
+}
+
+### Error: no se pueden modificar movimientos -> 400
+PATCH {{host}}/nota/{{crearNota.response.body.id}}
+Content-Type: application/json
+
+{
+    "movimientos": []
+}
+
+### Eliminar (revierte el stock, borra movimientos y la nota)
+DELETE {{host}}/nota/{{crearNota.response.body.id}}
+
+### Limpiar proveedor de prueba (200 si ya no tiene notas)
+DELETE {{host}}/clienteproveedor/{{crearProveedorNota.response.body.id}}

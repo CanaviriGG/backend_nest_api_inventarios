@@ -8,7 +8,7 @@ export class Movimiento{
     @PrimaryGeneratedColumn()
     id: number;
 
-    @ManyToOne("Nota", "movimientos")
+    @ManyToOne("Nota", (nota: Nota) => nota.movimientos)
     nota: Nota;
 
     @ManyToOne(() => Producto, {eager: true})

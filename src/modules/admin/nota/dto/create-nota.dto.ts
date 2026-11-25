@@ -1,106 +1,108 @@
-import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
-import { Type } from "class-transformer";
-import { IsArray, IsEnum, IsInt, IsNumber, IsOptional, IsString, ValidateNested } from "class-validator";
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
+import {
+  IsArray,
+  IsIn,
+  IsInt,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+  Min,
+  ValidateNested,
+} from 'class-validator';
 
-export class MovimientoDto{
+export class MovimientoDto {
+  @ApiProperty({ description: 'ID del producto', example: 10 })
+  @IsInt({ message: 'El ID del producto debe ser un número entero' })
+  @Min(1, { message: 'El ID del producto debe ser mayor a 0' })
+  producto_id: number;
 
-    @ApiProperty({
-        example: 10
-    })
-    @IsInt()
-    producto_id: number;
+  @ApiProperty({ description: 'ID del almacén', example: 1 })
+  @IsInt({ message: 'El ID del almacén debe ser un número entero' })
+  @Min(1, { message: 'El ID del almacén debe ser mayor a 0' })
+  almacen_id: number;
 
-    
-    @ApiProperty({
-        example: 1
-    })
-    @IsInt()
-    almacen_id: number;
+  @ApiProperty({ description: 'Cantidad movida', example: 5 })
+  @IsInt({ message: 'La cantidad debe ser un número entero' })
+  @Min(1, { message: 'La cantidad debe ser mayor a 0' })
+  cantidad: number;
 
-    @ApiProperty({
-        example: 5
-    })
-    @IsNumber()
-    cantidad: number;
+  @ApiProperty({
+    description: 'Tipo de movimiento de stock',
+    enum: ['ingreso', 'salida', 'devolucion'],
+    example: 'ingreso',
+  })
+  @IsIn(['ingreso', 'salida', 'devolucion'], {
+    message: "El tipo de movimiento debe ser 'ingreso', 'salida' o 'devolucion'",
+  })
+  tipo_movimiento: 'ingreso' | 'salida' | 'devolucion';
 
-    
-    @ApiProperty({
-        enum: ['ingreso', 'salida', 'devolucion'],
-        example: 'ingreso'
-    })
-    @IsEnum(['ingreso', 'salida', 'devolucion'])
-    tipo_movimiento: 'ingreso' | 'salida' | 'devolucion'
+  @ApiPropertyOptional({ description: 'Precio de compra', example: 235.2 })
+  @IsOptional()
+  @IsNumber({}, { message: 'El precio de compra debe ser un número' })
+  @Min(0, { message: 'El precio de compra no puede ser negativo' })
+  precio_compra?: number;
 
+  @ApiPropertyOptional({ description: 'Precio de venta', example: 250.5 })
+  @IsOptional()
+  @IsNumber({}, { message: 'El precio de venta debe ser un número' })
+  @Min(0, { message: 'El precio de venta no puede ser negativo' })
+  precio_venta?: number;
 
-    @ApiPropertyOptional({
-        example: 235.20
-    })
-    @IsOptional()
-    @IsNumber()
-    precio_compra: number;
-
-    
-    @ApiPropertyOptional({
-        example: 235.20
-    })
-    @IsOptional()
-    @IsNumber()
-    precio_venta: number;
-
-    @ApiPropertyOptional({
-        example: 'Movimiento generado por compra'
-    })
-    @IsOptional()
-    @IsString()
-    observaciones: string;
+  @ApiPropertyOptional({
+    description: 'Observaciones del movimiento',
+    example: 'Movimiento generado por compra',
+  })
+  @IsOptional()
+  @IsString({ message: 'Las observaciones deben ser una cadena de texto' })
+  observaciones?: string;
 }
 
-
 export class CreateNotaDto {
+  @ApiProperty({
+    description: 'Tipo de nota',
+    enum: ['compra', 'venta', 'devolucion'],
+    example: 'compra',
+  })
+  @IsNotEmpty({ message: 'El tipo de nota es obligatorio' })
+  @IsIn(['compra', 'venta', 'devolucion'], {
+    message: "El tipo de nota debe ser 'compra', 'venta' o 'devolucion'",
+  })
+  tipo_nota: 'compra' | 'venta' | 'devolucion';
 
-    @ApiProperty({
-        example: '2026-10-06'
-    })
-    /*
-    @IsString()
-    fecha?: string;
-    */
+  @ApiProperty({ description: 'ID del cliente/proveedor', example: 1 })
+  @IsInt({ message: 'El ID del cliente/proveedor debe ser un número entero' })
+  @Min(1, { message: 'El ID del cliente/proveedor debe ser mayor a 0' })
+  clienteproveedor_id: number;
 
-    @ApiProperty({
-        example: 'compra'
-    })
-    @IsString()
-    tipo_nota: 'compra' | 'venta' | 'devolucion'
+  @ApiProperty({ description: 'ID del usuario que registra la nota', example: 11 })
+  @IsInt({ message: 'El ID del usuario debe ser un número entero' })
+  @Min(1, { message: 'El ID del usuario debe ser mayor a 0' })
+  user_id: number;
 
-    @IsNumber()
-    clienteproveedor_id: number;
+  @ApiPropertyOptional({
+    description: 'Estado de la nota (se asigna "pendiente" al crear)',
+    example: 'pendiente',
+  })
+  @IsOptional()
+  @IsString({ message: 'El estado de la nota debe ser una cadena de texto' })
+  estado_nota?: string;
 
-    @ApiProperty({
-        example: 1
-    })
-    user_id: number;
+  @ApiPropertyOptional({
+    description: 'Observaciones generales de la nota',
+    example: 'Observaciones generales de la nota',
+  })
+  @IsOptional()
+  @IsString({ message: 'Las observaciones deben ser una cadena de texto' })
+  observaciones?: string;
 
-    @ApiPropertyOptional({
-        example: 'pendiente'
-    })
-    @IsOptional()
-    @IsString()
-    estado_nota: string;
-
-    @ApiPropertyOptional({
-        example: 'Observaciones generales de la nota'
-    })
-    @IsString()
-    @IsOptional()
-    observaciones: string;
-
-    @ApiProperty({
-        type: [MovimientoDto]
-    })
-    @IsArray()
-    @ValidateNested({each: true})
-    @Type(() => MovimientoDto)
-    movimientos: MovimientoDto[]
-
-
+  @ApiProperty({
+    description: 'Movimientos de stock de la nota',
+    type: [MovimientoDto],
+  })
+  @IsArray({ message: 'Los movimientos deben ser un arreglo' })
+  @ValidateNested({ each: true })
+  @Type(() => MovimientoDto)
+  movimientos: MovimientoDto[];
 }
