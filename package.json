@@ -22,7 +22,8 @@
     "test:e2e": "vitest run --config ./vitest.config.e2e.ts",
     "typeorm": "node --loader ts-node/esm ./node_modules/typeorm/cli.js",
     "migration:run": "npm run typeorm migration:run -- -d typeorm.config.ts",
-    "migration:generate": "npm run typeorm migration:generate -- -d typeorm.config.ts src/database/migrations/%npm_config_name%"
+    "migration:generate": "npm run typeorm migration:generate -- -d typeorm.config.ts src/database/migrations/%npm_config_name%",
+    "seed:notas": "node ./src/database/seeds/ejecutar-seed-notas.mjs"
   },
   "dependencies": {
     "@nestjs/common": "^12.0.1",
@@ -38,6 +39,7 @@
     "class-validator": "^0.15.1",
     "dotenv": "^18.0.10",
     "multer": "^2.5.0",
+    "pdfkit": "^0.21.0",
     "pg": "^8.23.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
@@ -52,6 +54,7 @@
     "@types/express": "^5.0.0",
     "@types/multer": "^2.3.0",
     "@types/node": "^24.13.6",
+    "@types/pdfkit": "^0.17.7",
     "@types/supertest": "^7.0.0",
     "@vitest/coverage-v8": "^4.1.2",
     "oxlint": "^1.58.0",

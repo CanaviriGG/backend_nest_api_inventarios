@@ -5,7 +5,9 @@ import { NotaController } from './nota.controller.js';
 import { Nota } from './entities/nota.entity.js';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Nota])],
+  imports: [
+    TypeOrmModule.forFeature([Nota])
+  ],
   controllers: [NotaController],
   providers: [NotaService],
 })

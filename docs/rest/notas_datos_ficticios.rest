@@ -1,0 +1,172 @@
+@host = http://127.0.0.1:3000
+
+# Requiere haber ejecutado: src/database/seeds/datos_ficticios_notas.sql
+# Usuario: notas.demo.9001@mail.com / Notas2026!
+# IDs ficticios: nota 9001 (compra), 9002 (venta), 9003 (devolución)
+#                proveedor 9001, cliente 9002, producto 9001/9002, almacén 9001
+
+### 0. Login
+# @name login
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{
+    "email": "notas.demo.9001@mail.com",
+    "password": "Notas2026!"
+}
+
+### 1. Listar todas las notas
+GET {{host}}/nota?page=1&limit=10
+Authorization: Bearer {{login.response.body.access_token}}
+
+### 2. Listar con filtros (tipo, estado, cliente/proveedor, búsqueda y fechas)
+GET {{host}}/nota?page=1&limit=10&tipo_nota=compra&estado_nota=pendiente&clienteproveedor_id=9001&search=mercader%C3%ADa&fecha_inicio=2026-11-01&fecha_fin=2026-11-30
+Authorization: Bearer {{login.response.body.access_token}}
+
+### 3. Solo devoluciones anuladas
+GET {{host}}/nota?tipo_nota=devolucion&estado_nota=anulada
+Authorization: Bearer {{login.response.body.access_token}}
+
+### 4. Mostrar nota de compra (9001)
+GET {{host}}/nota/9001
+Authorization: Bearer {{login.response.body.access_token}}
+
+### 5. Mostrar nota de venta (9002)
+GET {{host}}/nota/9002
+Authorization: Bearer {{login.response.body.access_token}}
+
+### 6. Mostrar inexistente -> 404
+GET {{host}}/nota/999999
+Authorization: Bearer {{login.response.body.access_token}}
+
+### 7. Crear nota de compra (ingreso de stock; arroz 9001, almacén 9001)
+# @name nuevaCompra
+POST {{host}}/nota
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.access_token}}
+
+{
+    "tipo_nota": "compra",
+    "clienteproveedor_id": 9001,
+    "observaciones": "Compra ficticia desde REST Client",
+    "movimientos": [
+        {
+            "producto_id": 9001,
+            "almacen_id": 9001,
+            "cantidad": 5,
+            "tipo_movimiento": "ingreso",
+            "precio_compra": 190.00,
+            "precio_venta": 250.50,
+            "observaciones": "Reposición de arroz"
+        },
+        {
+            "producto_id": 9002,
+            "almacen_id": 9001,
+            "cantidad": 3,
+            "tipo_movimiento": "ingreso",
+            "precio_compra": 68.00,
+            "precio_venta": 95.00
+        }
+    ]
+}
+
+### 8. Crear nota de venta (salida de stock)
+POST {{host}}/nota
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.access_token}}
+
+{
+    "tipo_nota": "venta",
+    "clienteproveedor_id": 9002,
+    "observaciones": "Venta ficticia desde REST Client",
+    "movimientos": [
+        {
+            "producto_id": 9001,
+            "almacen_id": 9001,
+            "cantidad": 2,
+            "tipo_movimiento": "salida",
+            "precio_venta": 250.50,
+            "observaciones": "Venta de arroz"
+        }
+    ]
+}
+
+### 9. Error de validación -> 400 (tipo inválido, cantidad 0, ID inválido)
+POST {{host}}/nota
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.access_token}}
+
+{
+    "tipo_nota": "otro",
+    "clienteproveedor_id": 0,
+    "observaciones": "Datos inválidos",
+    "movimientos": [
+        {
+            "producto_id": 9001,
+            "almacen_id": 9001,
+            "cantidad": 0,
+            "tipo_movimiento": "ingreso"
+        }
+    ]
+}
+
+### 10. Error de stock insuficiente -> 400 (solo hay 8 unidades de arroz)
+POST {{host}}/nota
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.access_token}}
+
+{
+    "tipo_nota": "venta",
+    "clienteproveedor_id": 9002,
+    "observaciones": "Salida superior al stock",
+    "movimientos": [
+        {
+            "producto_id": 9001,
+            "almacen_id": 9001,
+            "cantidad": 9999,
+            "tipo_movimiento": "salida",
+            "precio_venta": 250.50
+        }
+    ]
+}
+
+### 11. Modificar observaciones y estado de la nota 9001
+PATCH {{host}}/nota/9001
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.access_token}}
+
+{
+    "observaciones": "Compra ficticia aprobada",
+    "estado_nota": "aprobada"
+}
+
+### 12. Reemplazar movimientos de la nota 9001 (revierte stock y recalcula)
+PATCH {{host}}/nota/9001
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.access_token}}
+
+{
+    "movimientos": [
+        {
+            "producto_id": 9001,
+            "almacen_id": 9001,
+            "cantidad": 7,
+            "tipo_movimiento": "ingreso",
+            "precio_compra": 185.00,
+            "precio_venta": 250.50,
+            "observaciones": "Ajuste de compra ficticia"
+        }
+    ]
+}
+
+### 13. Descargar comprobante PDF de la nota 9001
+GET {{host}}/nota/9001/generar-recibo-pdf
+Authorization: Bearer {{login.response.body.access_token}}
+
+### 14. Descargar comprobante PDF de la nota 9002 (venta)
+GET {{host}}/nota/9002/generar-recibo-pdf
+Authorization: Bearer {{login.response.body.access_token}}
+
+### 15. Eliminar la nota de devolución 9003 (revierte su stock)
+DELETE {{host}}/nota/9003
+Authorization: Bearer {{login.response.body.access_token}}

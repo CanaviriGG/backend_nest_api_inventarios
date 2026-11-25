@@ -76,19 +76,6 @@ export class CreateNotaDto {
   @Min(1, { message: 'El ID del cliente/proveedor debe ser mayor a 0' })
   clienteproveedor_id: number;
 
-  @ApiProperty({ description: 'ID del usuario que registra la nota', example: 11 })
-  @IsInt({ message: 'El ID del usuario debe ser un número entero' })
-  @Min(1, { message: 'El ID del usuario debe ser mayor a 0' })
-  user_id: number;
-
-  @ApiPropertyOptional({
-    description: 'Estado de la nota (se asigna "pendiente" al crear)',
-    example: 'pendiente',
-  })
-  @IsOptional()
-  @IsString({ message: 'El estado de la nota debe ser una cadena de texto' })
-  estado_nota?: string;
-
   @ApiPropertyOptional({
     description: 'Observaciones generales de la nota',
     example: 'Observaciones generales de la nota',
